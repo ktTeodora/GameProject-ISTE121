@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: An abstract class for the game scenes
+* Date: 02/23/2022
+*/
+
 import javafx.scene.Scene;
 
 public abstract class GameScene {

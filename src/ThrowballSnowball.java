@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for the throwable snowball
+* Date: 02/23/2022
+*/
+
 import java.util.ArrayList;
 
 import javafx.geometry.Point2D;
@@ -26,7 +33,11 @@ public class ThrowballSnowball {
 
     }
 
-    // update
+    /**
+     * Updates the position of the snowball and checks if it collides with a ghost
+     * 
+     * @param gc the graphics content from the canvas
+     */
     public void update(GraphicsContext gc) {
 
         position = position.add(new Point2D(xSpeed, ySpeed));

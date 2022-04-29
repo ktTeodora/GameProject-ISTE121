@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for the how to play scene
+* Date: 02/23/2022
+*/
+
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;

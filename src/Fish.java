@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for the fish collectibles
+* Date: 02/23/2022
+*/
+
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
@@ -13,6 +20,11 @@ public class Fish extends Collectibles {
         sizeOfCollectible = 35;
     }
 
+    /**
+     * Called when fish is picked up
+     * 
+     * @param player the player
+     */
     @Override
     void onPickedUp(Player player) {
 
@@ -22,6 +34,12 @@ public class Fish extends Collectibles {
         map.addFish();
     } // when picked up method end
 
+    /**
+     * Check for whether the fish can be picked up
+     * 
+     * @param player the player
+     * @return boolean whether can be picked up
+     */
     @Override
     public boolean canPickUp(Player player) {
 

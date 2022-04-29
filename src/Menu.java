@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for the main menu scene
+* Date: 02/23/2022
+*/
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;

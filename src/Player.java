@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for the controllable player
+* Date: 02/23/2022
+*/
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -193,9 +200,13 @@ public class Player {
 
     } // end of setup input
 
-    // update method for checking the current movement of the player and
-    // continuously updating its position
-    // update is updating the local player
+    /**
+     * update method for checking the current movement of the player and
+     * continuously updating its position
+     * update is updating the local player
+     * 
+     * @param gc graphics context from the canvas
+     */
     public void update(GraphicsContext gc) {
 
         // resetting the speed after movement
@@ -308,6 +319,11 @@ public class Player {
 
     } // end of update
 
+    /**
+     * Updates the remote player
+     * 
+     * @param gc graphics context from the sc
+     */
     // update method for remote player
     public void updateRemote(GraphicsContext gc) {
 
@@ -333,7 +349,7 @@ public class Player {
     }
 
     // moving left and right
-    public boolean canMoveHorizontal(Image sprite, double horizontalSpeed, boolean canCheckVertical) {
+    private boolean canMoveHorizontal(Image sprite, double horizontalSpeed, boolean canCheckVertical) {
 
         // getting width and height of the player
         int width = (int) sprite.getWidth();
@@ -456,7 +472,7 @@ public class Player {
     } // end of move horizontal
 
     // moving up and down
-    public boolean canMoveVertical(Image sprite, double verticalSpeed, boolean canChechHorizontal) {
+    private boolean canMoveVertical(Image sprite, double verticalSpeed, boolean canChechHorizontal) {
 
         int width = (int) sprite.getWidth();
         int height = (int) sprite.getHeight();
@@ -666,66 +682,119 @@ public class Player {
         this.pinguPosition = pos;
     } // player position Point2D setter end
 
+    /**
+     * gets the players position
+     * 
+     * @return Point2D players position
+     */
     // getter for pingu position Point2D
     public Point2D getPinguPos() {
 
         return this.pinguPosition;
     } // pingu pos point2d getter end
 
+    /**
+     * sets the players x speed
+     * 
+     * @param _xSpeed x speed to set
+     */
     // setter for xSpeed
     public void setXSpeed(double _xSpeed) {
 
         this.xSpeed = _xSpeed;
     } // xSpeed setter end
 
+    /**
+     * gets the players x speed
+     * 
+     * @return double x speed
+     */
     // getter for xSpeed
     public double getXSpeed() {
 
         return this.xSpeed;
     } // xSpeed getter end
 
+    /**
+     * sets the players y speed
+     * 
+     * @param _ySpeed y speed to set
+     */
     // setter for ySpeed
     public void setYSpeed(double _ySpeed) {
 
         this.ySpeed = _ySpeed;
     } // ySpeed setter end
 
+    /**
+     * Gets the players y speed
+     * 
+     * @return double y speed
+     */
     // getter for ySpeed
     public double getYSpeed() {
 
         return this.ySpeed;
     } // ySpeed getter end
 
+    /**
+     * Gets the current image the player is using
+     * 
+     * @return Image the current player image
+     */
     // getter for the current image of the player
     public Image getCurrentImage() {
 
         return this.currentImage;
     } // current player image getter end
 
+    /**
+     * sets the number of lives the player has
+     * 
+     * @param lives lives to set
+     */
     // setter for player lives
     public void setLives(int lives) {
 
         this.lifeCount = lives;
     } // end of set lives
 
+    /**
+     * returns the number of lives the player has
+     * 
+     * @return int number of lives
+     */
     // getter for player lives
     public int getLives() {
 
         return lifeCount;
     } // end of get lives
 
+    /**
+     * returns the number of fish the player has
+     * 
+     * @return int number of fish
+     */
     // getter for fish count
     public int getFish() {
 
         return fishCount;
     } // end of get fish
 
+    /**
+     * Sets whether the game has been won
+     * 
+     * @param win value to set
+     */
     // setter for hasWon boolean
     public void setHasWon(boolean win) {
 
         hasWon = win;
     } // end of set has won
 
+    /**
+     * @return boolean
+     */
     // getter for hasWon boolean
     public boolean getWin() {
 

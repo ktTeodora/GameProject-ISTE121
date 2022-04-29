@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for the snowball collectible
+* Date: 02/23/2022
+*/
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -13,6 +20,11 @@ public class Snowball extends Collectibles {
         sizeOfCollectible = 30;
     }
 
+    /**
+     * Method called when snowball is picked up
+     * 
+     * @param player the player
+     */
     @Override
     void onPickedUp(Player player) {
 

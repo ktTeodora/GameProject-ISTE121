@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for choose player scene
+* Date: 02/23/2022
+*/
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -150,7 +157,8 @@ public class ChoosePlayer extends GameScene {
                 KeyCode code = _keyEvent.getCode();
                 // if "Esc", switch to Menu
                 if (code == KeyCode.ESCAPE) {
-
+                    // save text fields to xml when leaving this scene
+                    writeXMLFile();
                     Game.switchScene(new Menu());
                 }
             } // end of handle for return to menu

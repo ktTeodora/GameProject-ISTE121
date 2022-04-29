@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for the computer controled Ghosts
+* Date: 02/23/2022
+*/
+
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -103,7 +110,12 @@ public class Ghost {
 
     } // constructor end
 
-    // update method to track and update the position of a ghost
+    /**
+     * update method to track and update the position of a ghost
+     * 
+     * @param gc     graphics context from the canvas
+     * @param player the player
+     */
     public void update(GraphicsContext gc, Player player) {
 
         if (isDead) {
@@ -205,6 +217,12 @@ public class Ghost {
 
     } // end of update
 
+    /**
+     * Updates the ghosts on non-host players
+     * 
+     * @param gc     graphics context from the canvas
+     * @param player the player
+     */
     // update method for remote clients
     public void updateRemote(GraphicsContext gc, Player player) {
 
@@ -237,10 +255,15 @@ public class Ghost {
         } // end of if-statement that checks for collision
     }
 
+    /**
+     * Generates a random direction enum
+     * 
+     * @return Direction random direction
+     */
     // we need to know the ghost's position and keep updating the direction of it's
     // movements upon collision without manually controlling it
     // random selection !! returns an enum (4 options only)
-    public Direction randomDirection() {
+    private Direction randomDirection() {
 
         Random random = new Random();
         int randomNumber = random.nextInt(4); // 4 options
@@ -249,7 +272,7 @@ public class Ghost {
     } // end of randomDirection
 
     // moving left and right
-    public boolean canMoveHorizontal(Image sprite, double horizontalSpeed, boolean canCheckVertical) {
+    private boolean canMoveHorizontal(Image sprite, double horizontalSpeed, boolean canCheckVertical) {
 
         // getting width and height of the player
         int width = (int) sprite.getWidth();
@@ -363,7 +386,7 @@ public class Ghost {
     /********************************************** */
 
     // moving up and down
-    public boolean canMoveVertical(Image sprite, double verticalSpeed, boolean canChechHorizontal) {
+    private boolean canMoveVertical(Image sprite, double verticalSpeed, boolean canChechHorizontal) {
 
         int width = (int) sprite.getWidth();
         int height = (int) sprite.getHeight();
@@ -490,42 +513,68 @@ public class Ghost {
 
     /************************* MUTATORS ***************************/
 
-    // setting ghost xSpeed
+    /**
+     * Sets the x speed of the ghost
+     * 
+     * @param xSpeed the x speed to set
+     */
     public void setGhostXSpeed(double xSpeed) {
 
         this.xSpeed = xSpeed;
     } // setter for xSpeed end
 
-    // getting ghost xSpeed
+    /**
+     * gets the x speed of the ghost
+     * 
+     * @return double the x speed of the ghost
+     */
     public double getXSpeed() {
 
         return this.xSpeed;
     } // getter for xSpeed end
 
-    // setting ghost ySpeed
+    /**
+     * Sets the y speed of the ghost
+     * 
+     * @param ySpeed the y speed to set
+     */
     public void setYSpeed(double ySpeed) {
 
         this.ySpeed = ySpeed;
     } // setter from ySpeed end
 
-    // getting ghost ySpeed
+    /**
+     * Gets the ghost of the position
+     * 
+     * @return double the y speed
+     */
     public double getYSpeed() {
 
         return this.ySpeed;
     } // getter for ySpeed end
 
-    // setting ghost's position
+    /**
+     * Sets the ghosts position
+     * 
+     * @param position the position to set the ghost to
+     */
     public void setGhostPosition(Point2D position) {
 
         this.ghostPosition = position;
     } // setter for ghost position end
 
+    /**
+     * @return Point2D
+     */
     // getting ghost's position
     public Point2D getGhostPosition() {
 
         return this.ghostPosition;
     } // getter for ghost position
 
+    /**
+     * @param _isDead
+     */
     public void setIsDead(boolean _isDead) {
 
         isDead = _isDead;
@@ -543,6 +592,9 @@ public class Ghost {
         timer.schedule(task, 15000);
     }
 
+    /**
+     * @return boolean
+     */
     public boolean getIsDead() {
 
         return isDead;

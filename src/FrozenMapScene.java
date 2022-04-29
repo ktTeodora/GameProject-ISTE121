@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for the frozen map scene
+* Date: 02/23/2022
+*/
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
@@ -418,24 +425,46 @@ public class FrozenMapScene extends GameScene {
         totalFishCount++;
     }
 
+    /**
+     * Returns the total amount of fish between the two players
+     * 
+     * @return int the total fish
+     */
     // ********************** GETTER FOR FISH COUNT **********************
     public int getFishCount() {
 
         return totalFishCount;
     } // end of get fish count
 
+    /**
+     * Returns the list of ghosts
+     * 
+     * @return ArrayList<Ghost> list of ghosts
+     */
     // ************************ GETTER FOR GHOSTS ARRAY ***************************
     public ArrayList<Ghost> getGhosts() {
 
         return ghosts;
     }
 
+    /**
+     * Adds a new snowball to the thrown snowballs list
+     * 
+     * @param position start position
+     * @param xSpeed   x speed
+     * @param ySpeed   y speed
+     */
     // ************************ THROW SNOWBALL **************************
     public void throwBall(Point2D position, double xSpeed, double ySpeed) {
 
         throwSnowballs.add(new ThrowballSnowball(position, xSpeed, ySpeed));
     }
 
+    /**
+     * Called when the snowball hits an object so we can destroy it
+     * 
+     * @param snowball the snowball
+     */
     // ************************* ON HIT ****************************
     public void onBallHit(ThrowballSnowball snowball) {
 
@@ -754,6 +783,9 @@ public class FrozenMapScene extends GameScene {
 
     } // end of ClientThread
 
+    /**
+     * @param message
+     */
     // print to log method for recording events and messages in the client text area
     public void printToLog(String message) {
 

@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for the game server
+* Date: 02/23/2022
+*/
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
@@ -25,11 +32,18 @@ public class Server extends Application {
     TextArea taLog;
     ServerThread server;
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
 
         launch(args);
     } // end of main
 
+    /**
+     * @param _stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage _stage) throws Exception {
 
@@ -454,6 +468,11 @@ public class Server extends Application {
 
     } // end of client thread
 
+    /**
+     * prints messages to the log
+     * 
+     * @param message the message
+     */
     // method to print to server taLog
     public void printToLog(String message) {
 

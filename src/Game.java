@@ -42,6 +42,12 @@ public class Game extends Application {
 
     } // end of main
 
+    /**
+     * starts the program
+     * 
+     * @param _stage the stage
+     * @throws Exception
+     */
     // start method
     @Override
     public void start(Stage _stage) throws Exception {
@@ -74,6 +80,11 @@ public class Game extends Application {
 
     } // end of start
 
+    /**
+     * switches the scene
+     * 
+     * @param scene scene
+     */
     // method that switches the scenes
 
     // static method that is not bound by the game object instance
@@ -95,6 +106,11 @@ public class Game extends Application {
 
     } // end of switch scene method
 
+    /**
+     * sets the chosen player
+     * 
+     * @param _chosenPlayer the chosen player
+     */
     // mutators for setting and getting the result of the "choose player" action
     // setter
     public static void setChosenPlayer(PlayerCharacter _chosenPlayer) {
@@ -102,12 +118,22 @@ public class Game extends Application {
         chosenPlayer = _chosenPlayer;
     } // setter end
 
+    /**
+     * gets the chosen player
+     * 
+     * @return PlayerCharacter the chosen player
+     */
     // getter
     public static PlayerCharacter getChosenPlayer() {
 
         return chosenPlayer;
     } // getter end
 
+    /**
+     * gets current scene
+     * 
+     * @return GameScene the current scene
+     */
     // current scene getter
     // we don't hve a handle to the game class, and the variable is static
     public static GameScene getCurrentScene() {
@@ -115,6 +141,11 @@ public class Game extends Application {
         return currentScene;
     }
 
+    /**
+     * sets username
+     * 
+     * @param _username name to set
+     */
     // setter and getter for username string
     // set
     public static void setUsername(String _username) {
@@ -122,33 +153,52 @@ public class Game extends Application {
         username = _username;
     } // setter end
 
+    /**
+     * gets the username
+     * 
+     * @return String username
+     */
     // get
     public static String getUsername() {
 
         return username;
     } // getter end
 
-    // setter and getter for IP address
-    // set
+    /**
+     * Sets the IP Address
+     * 
+     * @param _ipAddress The IP to set
+     */
     public static void setIPAddress(String _ipAddress) {
 
         ipdAddress = _ipAddress;
     } // setter end
 
-    // get
+    /**
+     * Gets the IP Address
+     * 
+     * @return String IP Address
+     */
     public static String getIPAddress() {
 
         return ipdAddress;
     }
 
-    // setter and geter for current level
-    // set
+    /**
+     * Sets the current level
+     * 
+     * @param _currentLevel the current level to set
+     */
     public static void setCurrentLevel(int _currentLevel) {
 
         currentLevel = _currentLevel;
     } // setter end
 
-    // get
+    /**
+     * Gets the current level
+     * 
+     * @return int current level
+     */
     public static int getCurrentLevel() {
 
         return currentLevel;

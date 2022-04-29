@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A abstract class for the collectibles
+* Date: 02/23/2022
+*/
+
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -17,6 +24,13 @@ public abstract class Collectibles {
         this.position = position;
     } // end of constructor
 
+    /**
+     * updates collectibles
+     * 
+     * @param gc           graphics context
+     * @param localPlayer  player
+     * @param remotePlayer player
+     */
     // *********************** METHODS *************************
 
     // update method with distance check
@@ -79,10 +93,19 @@ public abstract class Collectibles {
 
     } // end of update end
 
-    // implemet with each item and add item effects
+    /**
+     * implemet with each item and add item effects
+     * 
+     * @param player player
+     */
     abstract void onPickedUp(Player player);
 
-    // method to check whether we can pick up an item
+    /**
+     * method to check whether we can pick up an item
+     * 
+     * @param player player
+     * @return boolean
+     */
     public boolean canPickUp(Player player) {
 
         return true;

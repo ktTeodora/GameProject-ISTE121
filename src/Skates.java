@@ -1,3 +1,10 @@
+/*  
+*Authors: Matea Boderistanac & Doroteja Krtalic
+*Course: ISTE-121
+* Class: A class for the skates collectible
+* Date: 02/23/2022
+*/
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -26,6 +33,11 @@ public class Skates extends Collectibles {
         timer.schedule(task, 15000);
     }
 
+    /**
+     * Called when the skates are picked up
+     * 
+     * @param player the player
+     */
     @Override
     void onPickedUp(Player player) {
 
