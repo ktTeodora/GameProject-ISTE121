@@ -305,6 +305,8 @@ public class Server extends Application {
 
                             printToLog("PLAYER DISCONNECTED");
 
+                            server.clients.clear();
+
                             break;
 
                     } // end of switch statement
@@ -437,7 +439,9 @@ public class Server extends Application {
             } finally {
 
                 // remove us from the server's clients
-                server.clients.remove(this);
+                // boolean removed = server.clients.remove(this);
+
+                // printToLog("" + removed);
                 // closing the socket automatically closes dos && dis!!
                 try {
                     cSocket.close();
