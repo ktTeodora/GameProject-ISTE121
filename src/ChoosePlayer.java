@@ -1,5 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,7 +9,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 
 public class ChoosePlayer extends GameScene {
 
@@ -21,6 +26,8 @@ public class ChoosePlayer extends GameScene {
         root.setAlignment(Pos.CENTER);
         root.setVgap(25);
         root.setHgap(10);
+
+        root.setBackground(new Background(new BackgroundFill(Color.ALICEBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
         // create a scene with a specific size (width, height), connnect with the layout
         scene = new Scene(root, Game.RES_WIDTH, Game.RES_HEIGHT);
