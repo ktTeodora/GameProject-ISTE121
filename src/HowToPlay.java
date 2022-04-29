@@ -16,7 +16,7 @@ public class HowToPlay extends GameScene {
         // create a scene with a specific size (width, height), connnect with the layout
         scene = new Scene(root, Game.RES_WIDTH, Game.RES_HEIGHT);
 
-        Image howToPlay = new Image("file:graphics/loadingScreen");
+        Image howToPlay = new Image("file:graphics/HowToPlay.gif");
         ImageView howToPlayView = new ImageView(howToPlay);
 
         // add to the root

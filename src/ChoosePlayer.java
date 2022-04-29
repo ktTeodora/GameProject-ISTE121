@@ -3,7 +3,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,7 +19,7 @@ public class ChoosePlayer extends GameScene {
         GridPane root = new GridPane();
         // customize root
         root.setAlignment(Pos.CENTER);
-        root.setVgap(5);
+        root.setVgap(25);
         root.setHgap(10);
 
         // create a scene with a specific size (width, height), connnect with the layout
@@ -30,10 +29,18 @@ public class ChoosePlayer extends GameScene {
         scene.getStylesheets().add("style.css");
 
         // GUI items
-        Label lblUsername = new Label("Username:");
+        // Label lblUsername = new Label("Username:");
+        Image username = new Image("file:graphics/Username.png", 180, 80, true, true);
+        ImageView usernnameView = new ImageView(username);
         TextField tfUsername = new TextField();
-        Label lblIP = new Label("IP Address:");
+        tfUsername.setPrefWidth(50);
+
+        // Label lblIP = new Label("IP Address:");
+        Image ipAddress = new Image("file:graphics/IPAddress.png", 180, 80, true, true);
+        ImageView ipAddressView = new ImageView(ipAddress);
         TextField tfIP = new TextField("localhost");
+        tfIP.setPrefWidth(50);
+
         // pingu
         Image pingu = new Image("file:graphics/frontPinguStill.gif", 100.0, 100.0, true, true);
         ImageView pinguView = new ImageView(pingu);
@@ -85,9 +92,9 @@ public class ChoosePlayer extends GameScene {
         // adding elements to the root
         root.add(btnPingu, 0, 0);
         root.add(btnMedo, 1, 0);
-        root.add(lblUsername, 0, 1);
+        root.add(usernnameView, 0, 1);
         root.add(tfUsername, 1, 1);
-        root.add(lblIP, 0, 2);
+        root.add(ipAddressView, 0, 2);
         root.add(tfIP, 1, 2);
 
         // return to the menu scene on "Esc" key press
