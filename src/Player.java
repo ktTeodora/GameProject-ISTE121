@@ -151,6 +151,10 @@ public class Player {
                         FrozenMapScene map = (FrozenMapScene) Game.getCurrentScene();
                         map.getCThread().sendChatMessage();
                         break;
+
+                    case SPACE:
+                        throwSnowball();
+                        break;
                 } // switch case end
 
             } // handle end
@@ -632,6 +636,27 @@ public class Player {
         } // end of life check if-statement
 
     } // end of the hitPingu method for collision between ghosts and the player
+
+    // throw snowball
+    public void throwSnowball() {
+
+        if (snowballCount > 0) {
+
+            snowballCount--;
+
+            final double MULTIPLIER = 1.2;
+
+            // if the pingu is still, throw downwards
+            if (xSpeed == 0.0 && ySpeed == 0.0) {
+
+                ySpeed = PINGU_SPEED * MULTIPLIER;
+
+            }
+
+            FrozenMapScene map = (FrozenMapScene) Game.getCurrentScene();
+            map.throwBall(pinguPosition, xSpeed, ySpeed);
+        }
+    }
 
     /************************* MUTATORS ***************************/
 

@@ -49,6 +49,7 @@ public class FrozenMapScene extends GameScene {
     ArrayList<Gingerbread> gingerbreadArray;
     ArrayList<Snowball> snowballArray;
     Skates skates;
+    ArrayList<ThrowballSnowball> throwSnowballs;
 
     // stops the loading screen
     Boolean finishedLoading = false;
@@ -178,6 +179,7 @@ public class FrozenMapScene extends GameScene {
         gingerbreadArray = new ArrayList<>();
         snowballArray = new ArrayList<>();
         fishArray = new ArrayList<>();
+        throwSnowballs = new ArrayList<>();
 
         // looping through all X pixels on the map
         for (int x = 1; x < Game.RES_WIDTH; x++) {
@@ -343,6 +345,11 @@ public class FrozenMapScene extends GameScene {
         // skates
         skates.update(gc, localPlayer, remotePlayer);
 
+        for (int i = 0; i < throwSnowballs.size(); i++) {
+
+            throwSnowballs.get(i).update(gc);
+        }
+
         // updating the player's position and draws them on canvas
         localPlayer.update(gc);
 
@@ -385,11 +392,6 @@ public class FrozenMapScene extends GameScene {
 
     } // end of update
 
-    /********************* DISPLAY LEVEL 2 *********************/
-    public void displayLevelTwo() {
-
-    }
-
     /************************* ADD ICECUBE **************************/
     public void addIce() {
 
@@ -421,6 +423,24 @@ public class FrozenMapScene extends GameScene {
 
         return totalFishCount;
     } // end of get fish count
+
+    // ************************ GETTER FOR GHOSTS ARRAY ***************************
+    public ArrayList<Ghost> getGhosts() {
+
+        return ghosts;
+    }
+
+    // ************************ THROW SNOWBALL **************************
+    public void throwBall(Point2D position, double xSpeed, double ySpeed) {
+
+        throwSnowballs.add(new ThrowballSnowball(position, xSpeed, ySpeed));
+    }
+
+    // ************************* ON HIT ****************************
+    public void onBallHit(ThrowballSnowball snowball) {
+
+        throwSnowballs.remove(snowball);
+    }
 
     // ************************* ANNONYMOUS INNER CLASS ***************************
     // ClientThread class

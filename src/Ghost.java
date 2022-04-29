@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -17,6 +19,8 @@ enum GhostColour {
 } // enum colour valuesof ghosts end
 
 public class Ghost {
+
+    boolean isDead = false;
 
     // enum for direction options for the ghost
     // enum - a type;
@@ -101,6 +105,11 @@ public class Ghost {
 
     // update method to track and update the position of a ghost
     public void update(GraphicsContext gc, Player player) {
+
+        if (isDead) {
+
+            return;
+        }
 
         // resets the speed after it has been applied to the given position
         // doing it in the beginning because we want to send over the x and y speed
@@ -516,5 +525,27 @@ public class Ghost {
 
         return this.ghostPosition;
     } // getter for ghost position
+
+    public void setIsDead(boolean _isDead) {
+
+        isDead = _isDead;
+
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+
+            @Override
+            public void run() {
+
+                isDead = false;
+            }
+        };
+
+        timer.schedule(task, 15000);
+    }
+
+    public boolean getIsDead() {
+
+        return isDead;
+    }
 
 } // end of ghost class
