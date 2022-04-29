@@ -1,3 +1,26 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.xml.crypto.dsig.TransformException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -16,6 +39,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 public class ChoosePlayer extends GameScene {
+
+    TextField tfUsername;
+    TextField tfIP;
 
     @Override
     protected void setupScene() {
@@ -39,14 +65,17 @@ public class ChoosePlayer extends GameScene {
         // Label lblUsername = new Label("Username:");
         Image username = new Image("file:graphics/Username.png", 180, 80, true, true);
         ImageView usernnameView = new ImageView(username);
-        TextField tfUsername = new TextField();
+        tfUsername = new TextField();
         tfUsername.setPrefWidth(50);
 
         // Label lblIP = new Label("IP Address:");
         Image ipAddress = new Image("file:graphics/IPAddress.png", 180, 80, true, true);
         ImageView ipAddressView = new ImageView(ipAddress);
-        TextField tfIP = new TextField("localhost");
+        tfIP = new TextField("localhost");
         tfIP.setPrefWidth(50);
+
+        // load xml file in-case we have text field values from last session
+        readXMLFile();
 
         // pingu
         Image pingu = new Image("file:graphics/frontPinguStill.gif", 100.0, 100.0, true, true);
@@ -66,6 +95,10 @@ public class ChoosePlayer extends GameScene {
                 Game.setUsername(tfUsername.getText());
                 // setting the IP address
                 Game.setIPAddress(tfIP.getText());
+
+                // write the input values to xml so we can load next time
+                writeXMLFile();
+
                 // set to game map
                 Game.switchScene(new FrozenMapScene());
             }
@@ -90,6 +123,10 @@ public class ChoosePlayer extends GameScene {
                 Game.setUsername(tfUsername.getText());
                 // setting the IP address
                 Game.setIPAddress(tfIP.getText());
+
+                // write the input values to xml so we can load next time
+                writeXMLFile();
+
                 // set to game map
                 Game.switchScene(new FrozenMapScene());
             }
@@ -125,6 +162,109 @@ public class ChoosePlayer extends GameScene {
     @Override
     public void update() {
         // TODO Auto-generated method stub
+
+    }
+
+    // adapted from https://mkyong.com/java/how-to-create-xml-file-in-java-dom/
+    private void writeXMLFile() {
+        String username = tfUsername.getText();
+        String IP = tfIP.getText();
+
+        try {
+            DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+
+            // create the root element <settings>
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("settings");
+            doc.appendChild(rootElement);
+
+            // create the <username> element, store value from text field
+            // and append to the root element <settings>
+            Element elementUsername = doc.createElement("username");
+            elementUsername.setTextContent(username);
+            rootElement.appendChild(elementUsername);
+
+            // create the <IP> element, store the passed in IP from the text field
+            // and append to the root element <settings>
+            Element ipElement = doc.createElement("IP");
+            ipElement.setTextContent(IP);
+            rootElement.appendChild(ipElement);
+
+            // create the xml file
+            FileOutputStream output = new FileOutputStream("user-settings.xml");
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+
+            // set the xml style
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(output);
+
+            transformer.transform(source, result);
+
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        } catch (TransformerConfigurationException tce) {
+            tce.printStackTrace();
+        } catch (TransformerException te) {
+            te.printStackTrace();
+        }
+    }
+
+    private void readXMLFile() {
+
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+        try {
+
+            // parse file
+            DocumentBuilder db = dbf.newDocumentBuilder();
+
+            File settingsFile = new File("user-settings.xml");
+
+            // if the settings file doesn't exist then early out, we have nothing to load
+            if (!settingsFile.exists()) {
+                return;
+            }
+
+            Document doc = db.parse(settingsFile);
+
+            doc.getDocumentElement().normalize();
+
+            // get <settings> node
+            NodeList list = doc.getElementsByTagName("settings");
+
+            for (int i = 0; i < list.getLength(); i++) {
+                Node node = list.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element element = (Element) node;
+
+                    // get <username> tag value
+                    String username = element.getElementsByTagName("username").item(0).getTextContent();
+
+                    // get <IP> tag value
+                    String IP = element.getElementsByTagName("IP").item(0).getTextContent();
+
+                    tfUsername.setText(username);
+                    tfIP.setText(IP);
+
+                }
+            }
+
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (SAXException se) {
+            se.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
 
     }
 
