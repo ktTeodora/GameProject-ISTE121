@@ -16,7 +16,7 @@
             "name": "Launch Game",
             "request": "launch",
             "mainClass": "Game",
-            "projectName": "MultiPlayerGame_decd3ecd",
+            "projectName": "GameProject-ISTE121_6f4d3ed2",
             "vmArgs": "--module-path /Users/mac-kaan/Downloads/javafx-sdk-17.0.1/lib --add-modules javafx.controls"
         },
         {
@@ -24,7 +24,7 @@
             "name": "Launch Server",
             "request": "launch",
             "mainClass": "Server",
-            "projectName": "MultiPlayerGame_decd3ecd",
+            "projectName": "GameProject-ISTE121_6f4d3ed2",
             "vmArgs": "--module-path /Users/mac-kaan/Downloads/javafx-sdk-17.0.1/lib --add-modules javafx.controls"
         }
     ],
@@ -34,4 +34,5 @@
             "configurations": ["Launch Game", "Launch Game"]
         }
     ]
+
 }
