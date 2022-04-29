@@ -395,10 +395,10 @@ public class FrozenMapScene extends GameScene {
 
         iceCubeCount++;
 
-        // if (iceCubeCount == iceCubeArray.size()) {
+        if (iceCubeCount == iceCubeArray.size()) {
 
-        // ************************ GAME TESTING *************************
-        if (iceCubeCount == 1) {
+            // ************************ GAME TESTING *************************
+            // if (iceCubeCount == 1) {
 
             for (int i = 0; i < fishArray.size(); i++) {
 

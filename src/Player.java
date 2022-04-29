@@ -103,7 +103,7 @@ public class Player {
                 left = new Image("file:graphics/leftMedo.gif", 50.0, 50.0, true, true);
                 still = new Image("file:graphics/bearStill.gif", 50.0, 50.0, true, true);
                 leftSkate = new Image("file:graphics/LeftMedoSkate.png", 50.0, 50.0, true, true);
-                rightSkate = new Image("file:graphics/RightMedoSkate", 50.0, 50.0, true, true);
+                rightSkate = new Image("file:graphics/RightMedoSkate.png", 50.0, 50.0, true, true);
                 break;
 
         } // end of switch character for the player

@@ -30,6 +30,18 @@ public class Skates extends Collectibles {
     void onPickedUp(Player player) {
 
         player.addSkates();
+
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+
+            @Override
+            public void run() {
+
+                pickedUp = false;
+            }
+        };
+
+        timer.schedule(task, 15000);
     }
 
 }
