@@ -69,11 +69,13 @@ public class FrozenMapScene extends GameScene {
     boolean isHost;
 
     Image background = new Image("file:graphics/MapRevised.png");
-    public static Image collisionMap = new Image("file:graphics/CollisionMap2.png");
+    public static Image collisionMap = new Image("file:graphics/CollisionMap.png");
     Image loadingScreen = new Image("file:graphics/LoadingScreen.gif");
     Image win = new Image("file:graphics/YouWin.gif");
     Image lose = new Image("file:graphics/YouLose.gif");
+    Image upperLayer = new Image("file:graphics/3DLayerMap.png");
     Image level2 = new Image("file:graphics/Level2.png");
+    Image snowy = new Image("file:graphics/snowisfalling.gif");
 
     @Override
     protected void setupScene() {
@@ -392,8 +394,11 @@ public class FrozenMapScene extends GameScene {
         gc.drawImage(iceCubesCount, 42, 47 - iceCubesCount.getHeight());
         gc.fillText("" + iceCubeCount, 80, 35);
 
+        gc.drawImage(upperLayer, 0, 0);
+
         if (Game.currentLevel == 2) {
 
+            gc.drawImage(snowy, 0, 0);
             gc.drawImage(level2, 0, 0);
         }
 
